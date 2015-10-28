@@ -41,4 +41,10 @@
         <connection>scm:git:git://github.com/devosonder/bigwebapp.git</connection>
         <developerConnection>scm:git:git@github.com:devosonder/bigwebapp.git</developerConnection>
     </scm>
+
+    <modules>
+        <module>web</module>
+    </modules>
+
+
 </project>
