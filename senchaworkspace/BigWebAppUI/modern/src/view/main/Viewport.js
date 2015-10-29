@@ -24,7 +24,7 @@ Ext.define('BigWebAppUI.view.main.Viewport', {
 
     items: [
 
-        {html: '<h1>Yapım aşamasında</h1>'}
+        {html: '<h1>Coming soon.</h1>'}
 
     ]
 });
