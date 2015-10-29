@@ -91,6 +91,11 @@
             <artifactId>ojdbc6</artifactId>
             <version>11.1.0.7.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.onderdal</groupId>
+            <artifactId>core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 

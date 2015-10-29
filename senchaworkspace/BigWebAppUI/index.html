@@ -7,7 +7,7 @@
 
     <title>BigWebAppUI</title>
 
-    
+
     <script type="text/javascript">
         var Ext = Ext || {}; // Ext namespace won't be defined yet...
 
@@ -17,37 +17,20 @@
         // filters in your manifest or by platformConfig expressions in your app.
         //
         Ext.beforeLoad = function (tags) {
-            var s = location.search,  // the query string (ex "?foo=1&bar")
-                profile;
-
-            // For testing look for "?classic" or "?modern" in the URL to override
-            // device detection default.
-            //
-            if (s.match(/\bclassic\b/)) {
+            var profile = 'modern';
+            if (tags.desktop) {
                 profile = 'classic';
             }
-            else if (s.match(/\bmodern\b/)) {
-                profile = 'modern';
-            }
-            else {
-                profile = tags.desktop ? 'classic' : 'modern';
-                //profile = tags.phone ? 'modern' : 'classic';
-            }
+
 
             Ext.manifest = profile; // this name must match a build profile name
-
-            // This function is called once the manifest is available but before
-            // any data is pulled from it.
-            //
-            //return function (manifest) {
-                // peek at / modify the manifest object
-            //};
         };
     </script>
-    
-    
+
+
     <!-- The line below must be kept intact for Sencha Cmd to build your application -->
-    <script id="microloader" data-app="94b672f9-121d-4a80-b53d-fc8b645c004b" type="text/javascript" src="bootstrap.js"></script>
+    <script id="microloader" data-app="94b672f9-121d-4a80-b53d-fc8b645c004b" type="text/javascript"
+            src="bootstrap.js"></script>
 
 </head>
 <body></body>
