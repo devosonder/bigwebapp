@@ -1,7 +1,7 @@
 /**
  * Created by onder.dal on 29.10.2015.
  */
-Ext.define('BigWebAppUI.view.main.viewport.Viewport', {
+Ext.define('BigWebAppUI.view.main.Viewport', {
     extend: 'Ext.Container',
 
     requires: [

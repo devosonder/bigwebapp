@@ -1,7 +1,7 @@
 /**
  * Created by onder.dal on 29.10.2015.
  */
-Ext.define('BigWebAppUI.view.main.viewport.Viewport', {
+Ext.define('BigWebAppUI.view.main.Viewport', {
     extend: 'Ext.Container',
 
     requires: [
@@ -14,7 +14,8 @@ Ext.define('BigWebAppUI.view.main.viewport.Viewport', {
         'Ext.panel.Panel',
         'Ext.tab.Panel',
         'Ext.tab.Tab',
-        'Ext.tree.Panel'
+        'Ext.tree.Panel',
+        'Ext.plugin.Viewport'
     ],
 
     /*
@@ -93,9 +94,6 @@ Ext.define('BigWebAppUI.view.main.viewport.Viewport', {
                     className: 'com.akgun.kys.model.kys.Menuler',
                     params: {
                         yeniMenu: true
-                    },
-                    listeners: {
-                        select: 'onCmbMainMenuSelect'
                     }
                 }
             ]

@@ -3,7 +3,7 @@ $image-search-path: 'D:/Projeler/bigwebapp/senchaworkspace/build/development/Big
 $theme-name:  dynamic( 'theme-triton' );
 $include-bigwebappui-application: dynamic(true);;
 $include-bigwebappui-store-personnel: dynamic(true);;
-$include-bigwebappui-view-main-viewport-viewport: dynamic(true);;
+$include-bigwebappui-view-main-viewport: dynamic(true);;
 $include-bigwebappui-view-main-viewport-viewportcontroller: dynamic(true);;
 $include-bigwebappui-view-main-viewport-viewportmodel: dynamic(true);;
 $include-ext-abstractcomponent: dynamic(true);;
