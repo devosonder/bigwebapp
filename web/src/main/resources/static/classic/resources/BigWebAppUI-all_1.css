@@ -4637,7 +4637,7 @@ body > .x-mask {
     overflow: hidden;
     width: 16px;
     height: 16px;
-    background-image: url(images/tools/tool-sprites.png);
+    background-image: url(/loginresources/tool-sprites.png);
     margin: 0;
     color: #fff;
     text-align: center;
@@ -8465,7 +8465,7 @@ body > .x-mask {
     width: 16px;
     height: 16px;
     margin: 0 5px;
-    background: url(images/form/exclamation.png) no-repeat;
+    background: url(/loginresources/exclamation.png) no-repeat;
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/Labelable.scss:143 */
 .x-form-invalid-under-default {
@@ -8473,7 +8473,7 @@ body > .x-mask {
     color: #cf4c35;
     font: 300 13px/16px 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
     background: no-repeat 0 2px;
-    background-image: url(images/form/exclamation.png);
+    background-image: url(/loginresources/exclamation.png);
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/form/Labelable.scss:151 */
 .x-form-error-wrap-default.x-form-error-wrap-side {
@@ -9160,7 +9160,7 @@ body > .x-mask {
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tip/Tip.scss:269 */
 .x-tip-body-form-invalid {
     background: 1px 1px no-repeat;
-    background-image: url(images/form/exclamation.png);
+    background-image: url(/loginresources/exclamation.png);
 }
 /* http://localhost:1841/ext/classic/theme-neutral/sass/src/tip/Tip.scss:272 */
 .x-tip-body-form-invalid li {

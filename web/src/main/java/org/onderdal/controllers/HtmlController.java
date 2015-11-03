@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,52 +26,9 @@ import java.util.Map;
 @ComponentScan
 public class HtmlController {
 
-    private static final String END_TAGS = "</body></html>";
-
-    private final String indexHtml;
-
-    private final String appJs;
-
-    private final String loginJs;
-
-    private final String passwordResetJs;
-
-    private final Environment environment;
-
     @Autowired
     AppProperties appProperties;
 
-    @Autowired
-    public HtmlController(Environment environment, ServletContext servletContext,
-                          AppProperties appProperties) throws IOException {
-        this.environment = environment;
-        this.appJs = (String) servletContext.getAttribute("app_js");
-        this.loginJs = (String) servletContext.getAttribute("login_js");
-        this.passwordResetJs = (String) servletContext.getAttribute("passwordreset_js");
-        this.indexHtml = "";
-
-        /*ClassPathResource cp = new ClassPathResource("loader.css");
-        String loadercss;
-        try (InputStream is = cp.getInputStream()) {
-            loadercss = StreamUtils.copyToString(is, StandardCharsets.UTF_8);
-        }
-
-        cp = new ClassPathResource("index.template");
-        String htmlTemplate;
-        try (InputStream is = cp.getInputStream()) {
-            htmlTemplate = StreamUtils.copyToString(is, StandardCharsets.UTF_8);
-        }
-
-        this.indexHtml = htmlTemplate.replace("application.loader_css", loadercss)
-                .replace("application.app_css",
-                        (String) servletContext.getAttribute("app_css"))
-                .replace("{appProperties.applicationName}",
-                        appProperties.getApplicationName());
-
-        this.appJs = (String) servletContext.getAttribute("app_js");
-        this.loginJs = (String) servletContext.getAttribute("login_js");
-        this.passwordResetJs = (String) servletContext.getAttribute("passwordreset_js");*/
-    }
 
     @RequestMapping(value = {"/", "/index.html"}, produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
@@ -83,28 +39,27 @@ public class HtmlController {
         return new ModelAndView("index",m);
     }
 
-    @RequestMapping(value = {"/login.html"}, produces = MediaType.TEXT_HTML_VALUE)
+    @RequestMapping(value = {"/login.html"})
     @ResponseBody
-    public String login(HttpServletResponse response, Locale locale) {
-        response.setContentType("text/html; charset=utf-8");
-        return this.indexHtml + createI18nScript(this.environment, locale) + this.loginJs
-                + createExtJSLocale(this.environment, locale) + END_TAGS;
+    public ModelAndView login(HttpServletResponse response, Locale locale) {
+        Map<String, Object> m = new HashMap<>();
+        m.put("applicationName", appProperties.getApplicationName());
+        return new ModelAndView("login",m);
     }
 
     @RequestMapping(value = {"/passwordreset.html"},
             produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
-    public String passwordreset(HttpServletResponse response, Locale locale, String token)
+    public ModelAndView passwordreset(HttpServletResponse response, Locale locale, String token)
             throws IOException {
         if (!StringUtils.hasText(token)) {
             response.sendRedirect("/index.html");
         }
 
         response.setContentType("text/html; charset=utf-8");
-        return this.indexHtml + createI18nScript(this.environment, locale)
-                + "<script>var passwordResetToken = '" + token + "';</script>"
-                + this.passwordResetJs + createExtJSLocale(this.environment, locale)
-                + END_TAGS;
+        Map<String, Object> m = new HashMap<>();
+        m.put("applicationName", appProperties.getApplicationName());
+        return new ModelAndView("passwordreset",m);
     }
 
     private String createExtJSLocale(Environment environment, Locale locale) {
