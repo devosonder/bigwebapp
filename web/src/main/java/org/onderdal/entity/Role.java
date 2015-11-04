@@ -1,5 +1,14 @@
 package org.onderdal.entity;
 
+/**
+ * The enum Role.
+ */
 public enum Role {
-	ADMIN, USER
+    /**
+     * The ADMIN.
+     */
+    ADMIN, /**
+     * The USER.
+     */
+    USER
 }

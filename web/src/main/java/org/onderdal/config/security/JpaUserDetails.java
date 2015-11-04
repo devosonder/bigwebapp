@@ -10,6 +10,10 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.*;
 
+/**
+ * The type Jpa user details.
+ * @author onder.dal
+ */
 public class JpaUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
@@ -30,6 +34,11 @@ public class JpaUserDetails implements UserDetails {
 
 	private final Locale locale;
 
+	/**
+	 * Instantiates a new Jpa user details.
+	 *
+	 * @param user the user
+     */
 	public JpaUserDetails(User user) {
 		this.userDbId = user.getId();
 
@@ -71,10 +80,20 @@ public class JpaUserDetails implements UserDetails {
 		return this.loginName;
 	}
 
+	/**
+	 * Gets user db id.
+	 * @author onder.dal *
+	 * @return the user db id
+     */
 	public Long getUserDbId() {
 		return this.userDbId;
 	}
 
+	/**
+	 * Gets full name.
+	 * @author onder.dal *
+	 * @return the full name
+     */
 	public String getFullName() {
 		return this.fullName;
 	}
@@ -99,6 +118,21 @@ public class JpaUserDetails implements UserDetails {
 		return this.enabled;
 	}
 
+	/**
+	 * Gets locale.
+	 * @author onder.dal *
+	 * @return the locale
+     */
+	public Locale getLocale() {
+		return locale;
+	}
+
+	/**
+	 * Has role.
+	 * @author onder.dal *
+	 * @param role the role
+	 * @return the boolean
+     */
 	public boolean hasRole(String role) {
 		if (getAuthorities() != null) {
 			for (GrantedAuthority authority : getAuthorities()) {

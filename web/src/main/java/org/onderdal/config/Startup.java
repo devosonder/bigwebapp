@@ -17,6 +17,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.sql.DataSource;
 
+/**
+ * The type Startup.
+ * @author onder.dal
+ */
 @Service("startup")
 class Startup {
 
@@ -26,6 +30,14 @@ class Startup {
 
 	private final EntityManager entityManager;
 
+	/**
+	 * Instantiates a new Startup.
+	 *
+	 * @param dataSource the data source
+	 * @param passwordEncoder the password encoder
+	 * @param transactionTemplate the transaction template
+	 * @param entityManagerFactory the entity manager factory
+     */
 	@Autowired
 	public Startup(DataSource dataSource,
 				   PasswordEncoder passwordEncoder, TransactionTemplate transactionTemplate, EntityManagerFactory entityManagerFactory) {

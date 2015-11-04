@@ -12,6 +12,10 @@ import org.springframework.security.web.servletapi.SecurityContextHolderAwareReq
 
 import javax.servlet.ServletException;
 
+/**
+ * The type Default roles prefix post processor.
+ * @author onder.dal
+ */
 public class DefaultRolesPrefixPostProcessor
 		implements BeanPostProcessor, PriorityOrdered {
 

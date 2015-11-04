@@ -65,8 +65,9 @@ public class DataSourceConfig {
     private String ddlAuto;
 
     /**
-     * @return the data source
+     * Primary data source.
      * @author Önder DAL  Primary data source data source.
+     * @return the data source
      */
     @Bean
     @Autowired
@@ -97,8 +98,8 @@ public class DataSourceConfig {
     /**
      * Declare the JPA entity manager factory.
      *
-     * @return the local container entity manager factory bean
      * @author Önder DAL  Entity manager factory local container entity manager factory bean.
+     * @return the local container entity manager factory bean
      */
     @Bean
     @Autowired
@@ -132,8 +133,8 @@ public class DataSourceConfig {
     /**
      * Declare the transaction manager.
      *
-     * @return the jpa transaction manager
      * @author Önder DAL  Transaction manager jpa transaction manager.
+     * @return the jpa transaction manager
      */
     @Bean
     public JpaTransactionManager transactionManager() {
@@ -150,8 +151,8 @@ public class DataSourceConfig {
      * Spring's unchecked data access exceptions (i.e. a subclass of
      * DataAccessException).
      *
-     * @return the persistence exception translation post processor
      * @author Önder DAL  Exception translation persistence exception translation post processor.
+     * @return the persistence exception translation post processor
      */
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {

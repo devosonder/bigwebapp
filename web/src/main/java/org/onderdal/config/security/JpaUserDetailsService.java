@@ -11,10 +11,17 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * The type Jpa user details service.
+ * @author onder.dal
+ */
 @Service("jpaUserDetailsService")
 @Transactional(readOnly = true, isolation = Isolation.DEFAULT, rollbackFor = {Exception.class}, propagation = Propagation.REQUIRED)
 public class JpaUserDetailsService implements UserDetailsService {
 
+    /**
+     * The User dAO.
+     */
     @Autowired
     UserDAO userDAO;
 

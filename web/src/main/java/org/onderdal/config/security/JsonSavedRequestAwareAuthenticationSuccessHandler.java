@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * The type Json saved request aware authentication success handler.
+ * @author onder.dal
+ */
 public class JsonSavedRequestAwareAuthenticationSuccessHandler
 		extends SimpleUrlAuthenticationSuccessHandler {
 
@@ -53,6 +57,11 @@ public class JsonSavedRequestAwareAuthenticationSuccessHandler
 		response.getWriter().flush();
 	}
 
+	/**
+	 * Sets request cache.
+	 * @author onder.dal *
+	 * @param requestCache the request cache
+     */
 	public void setRequestCache(RequestCache requestCache) {
 		this.requestCache = requestCache;
 	}

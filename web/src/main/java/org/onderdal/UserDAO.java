@@ -18,9 +18,10 @@ import java.util.List;
 public class UserDAO extends BaseDAO {
 
     /**
+     * Gets by login name.
+     * @author Önder DAL  Gets by login name.
      * @param loginName the login name
      * @return the by login name
-     * @author Önder DAL  Gets by login name.
      */
     public User getByLoginName(String loginName) {
         String hql = "from User u where u.loginName = :loginName and u.deleted = false and u.enabled = true";
@@ -34,6 +35,11 @@ public class UserDAO extends BaseDAO {
         }
     }
 
+    /**
+     * Get all.
+     * @author onder.dal *
+     * @return the list
+     */
     public List<User> getAll(){
         String hql = "from User ";
         Query query = createQuery(hql);

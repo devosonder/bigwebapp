@@ -31,7 +31,7 @@ public class BaseDAO {
     /**
      * Update t.
      * @author onder.dal *
-     * @param <T>  the type parameter
+     * @param <T>   the type parameter
      * @param entity the entity
      * @return the t
      */

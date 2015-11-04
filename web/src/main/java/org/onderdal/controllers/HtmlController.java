@@ -20,16 +20,27 @@ import java.util.Map;
 /**
  * Created by onder.dal on 29.10.2015.
  * package: org.onderdal.controllers
+ * @author onder.dal
  */
 
 @Controller
 @ComponentScan
 public class HtmlController {
 
+    /**
+     * The App properties.
+     */
     @Autowired
     AppProperties appProperties;
 
 
+    /**
+     * Index model and view.
+     * @author onder.dal *
+     * @param response the response
+     * @param locale the locale
+     * @return the model and view
+     */
     @RequestMapping(value = {"/", "/index.html"}, produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public ModelAndView index(HttpServletResponse response, Locale locale) {
@@ -39,6 +50,13 @@ public class HtmlController {
         return new ModelAndView("index",m);
     }
 
+    /**
+     * Login model and view.
+     * @author onder.dal *
+     * @param response the response
+     * @param locale the locale
+     * @return the model and view
+     */
     @RequestMapping(value = {"/login.html"})
     @ResponseBody
     public ModelAndView login(HttpServletResponse response, Locale locale) {
@@ -47,6 +65,15 @@ public class HtmlController {
         return new ModelAndView("login",m);
     }
 
+    /**
+     * Passwordreset model and view.
+     * @author onder.dal *
+     * @param response the response
+     * @param locale the locale
+     * @param token the token
+     * @return the model and view
+     * @throws IOException the iO exception
+     */
     @RequestMapping(value = {"/passwordreset.html"},
             produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody

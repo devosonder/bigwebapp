@@ -3,17 +3,11 @@ package org.onderdal.config;
 import com.hazelcast.config.*;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.web.SessionListener;
-import com.hazelcast.web.WebFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
 
-import javax.servlet.DispatcherType;
-import javax.servlet.http.HttpSessionListener;
 import java.util.Arrays;
 
 /**
@@ -21,38 +15,19 @@ import java.util.Arrays;
  */
 @Configuration
 public class HazelcastConfig {
-
     @Value("${hazelcast.members}")
     private String hazelcastMembers;
-
-    @Bean
-    public FilterRegistrationBean hazelcastWmFilter(){
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        filterRegistrationBean.setFilter(new WebFilter());
-        filterRegistrationBean.setAsyncSupported(true);
-        filterRegistrationBean.addInitParameter("map-name", "bigwebapp-sessions");
-        filterRegistrationBean.addInitParameter("map-sticky-session", "false");
-        filterRegistrationBean.addInitParameter("debug", "true");
-        filterRegistrationBean.addInitParameter("use-client", "false");
-        filterRegistrationBean.addInitParameter("instance-name", "bigwebapp");
-        filterRegistrationBean.addInitParameter("instance-deferred-write", "true");
-        filterRegistrationBean.addUrlPatterns("/*");
-        filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE);
-        filterRegistrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE);
-        return filterRegistrationBean;
-    }
-
-    @Bean
-    public HttpSessionListener hazelcastSessionListener(){
-        return new SessionListener();
-    }
-
+    /**
+     * Hazelcast instance.
+     * @author onder.dal *
+     * @return the hazelcast instance
+     */
     @Bean
     @Autowired
     public HazelcastInstance hazelcastInstance() {
         final Config config = new Config();
         GroupConfig groupConfig = new GroupConfig();
-        groupConfig.setName("bigwebdev");
+//        groupConfig.setName("dev");
         groupConfig.setPassword("p@ssword");
         config.setGroupConfig(groupConfig);
 
@@ -71,8 +46,11 @@ public class HazelcastConfig {
 
         final TcpIpConfig tcpIpConfig = new TcpIpConfig();
         tcpIpConfig.setEnabled(true);
-        String[] hazelcastMembersArr = hazelcastMembers.split(",");
-        tcpIpConfig.setMembers(Arrays.asList(hazelcastMembersArr));
+        String[] hazelcastMembersArr = hazelcastMembers.replace(" ","").split(",");
+        if (hazelcastMembersArr.length != 1 || !hazelcastMembersArr[0].toString().isEmpty()) {
+            tcpIpConfig.setMembers(Arrays.asList(hazelcastMembersArr));
+
+        }
 
 
         joinConfig.setTcpIpConfig(tcpIpConfig);

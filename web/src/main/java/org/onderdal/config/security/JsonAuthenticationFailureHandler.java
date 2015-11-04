@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * The type Json authentication failure handler.
+ * @author onder.dal
+ */
 public class JsonAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
 	@Override
